@@ -13,12 +13,12 @@ class MqttOp
 
   def mqtt_listen
     puts "LISNENER ON"
-    @client.get('test') do |topic,message|
+    @client.get('to_web') do |topic,message|
       puts "#{topic}: #{message}"
     end
   end
 
   def feed_fish
-    @client.publish('test', 'feed_fish')
+    @client.publish('to_device', 'feed_fish')
   end
 end
