@@ -4,7 +4,10 @@ require 'mqtt'
 class MqttOp
   def initialize
     puts "NEW MQTT CLIENT!"
-    @client = MQTT::Client.connect('test.mosquitto.org')
+    @client = MQTT::Client.connect(
+        :host => 'test.mosquitto.org',
+        :port => 1883
+    )
     Thread.new{ self.mqtt_listen }
   end
 
