@@ -3,9 +3,7 @@ require 'mqtt_op'
 class FishController < ApplicationController
   before_action :set_fish, only: [:show, :edit, :update, :destroy]
 
-  def initialize
-    @mqtt = MqttOp.new
-  end
+  $mqtt = MqttOp.new
 
   # GET /fish
   # GET /fish.json
@@ -19,7 +17,7 @@ class FishController < ApplicationController
   end
 
   def feed_fish
-    @mqtt.feed_fish
+    $mqtt.feed_fish
     @fish = Fish.find(params[:fish_id])
     @fish.add_food
     # @fish.save
