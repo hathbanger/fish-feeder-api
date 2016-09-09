@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  after_filter :set_cors
+  after_action :set_cors
   
   def set_cors
     headers['Access-Control-Allow-Origin'] = '*'
