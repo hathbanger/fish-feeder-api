@@ -1,10 +1,5 @@
-require 'mqtt_op'
-
 class FishController < ApplicationController
   before_action :set_fish, only: [:show, :edit, :update, :destroy]
-
-  # Needs to be instantiated to a super class somewhere so multiple other controllers can use the same client
-  $mqtt = MqttOp.new
 
   # GET /fish
   # GET /fish.json
