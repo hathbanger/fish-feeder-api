@@ -1,6 +1,5 @@
 require 'mqtt'
 
-
 class MqttOp
   def initialize
     puts "NEW MQTT CLIENT!"
@@ -25,14 +24,24 @@ class MqttOp
 
   def handle_message(message)
     messages = message.split(" ")
-    status = messages[0]
-    task = messages[1]
-    if status == "Task_Completed"
-      puts ("Status: " + status + "Task: " + task)
-      # todo Implement
-    end
-    if status == "Task_Recieved"
-      # todo Implement
+    deviceId = messages[0]
+    code = messages[1]
+    status = messages[2]
+    message = messages[3]
+    if code == "status"
+      if status == "Task_Completed"
+        puts ("Status: " + status + "Task: " + message)
+        # todo Implement
+      end
+      if status == "Task_Recieved"
+        # todo Implement
+      end
+    elsif code == "report"
+      if status == "feed_report"
+        feed_report = FeedReport.new
+        feed_report = feed_report.unmarshall_json(message)
+        feed_report.print
+      end
     end
   end
 end
