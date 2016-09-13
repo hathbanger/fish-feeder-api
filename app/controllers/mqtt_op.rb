@@ -27,7 +27,6 @@ class MqttOp
     messages = message.split(" ")
     status = messages[0]
     task = messages[1]
-
     if status == "Task_Completed"
       puts ("Status: " + status + "Task: " + task)
       # todo Implement
