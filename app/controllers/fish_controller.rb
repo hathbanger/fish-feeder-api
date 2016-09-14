@@ -14,6 +14,7 @@ class FishController < ApplicationController
 
   def feed_fish
     $mqtt.feed_fish
+    render :status => "200", json: @fish
 
     # todo IMPLEMENT // Respond to Browser when Feed Report has been returned
 
