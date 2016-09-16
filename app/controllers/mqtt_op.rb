@@ -37,4 +37,3 @@ class MqttOp
     end
   end
 end
-
