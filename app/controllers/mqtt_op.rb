@@ -1,5 +1,5 @@
 require 'mqtt'
-
+require 'json'
 
 class MqttOp
   def initialize
@@ -14,7 +14,7 @@ class MqttOp
   def mqtt_listen
     puts "LISNENER ON"
     @client.get('to_web') do |topic, message|
-      puts "#{topic}: #{message}"
+      # puts "#{topic}: #{message}"
       self.handle_message(message)
     end
   end
@@ -25,15 +25,36 @@ class MqttOp
 
   def handle_message(message)
     messages = message.split(" ")
-    status = messages[0]
-    task = messages[1]
+    deviceId = messages[0]
+    code = messages[1]
+    status = messages[2]
+    message = messages[3]
+    if code == "status"
+      if status == "Task_Completed"
+        puts ("Status: " + status + "Task: " + message)
+        # todo Implement
+      end
+      if status == "Task_Recieved"
+        # todo Implement
+      end
+    elsif code == "report"
+      if status == "pass"
+        puts message
+        # haash = JSON.parse(message)
+        # puts haash
+        # feed_report = FeedReport.new
+        #
+        # feed_report.id = haash["id".to_sym]
+        # feed_report.deviceIdId = haash["device_id"]
+        # feed_report.timestamp = haash["timestamp"]
+        # feed_report.success = haash["success"]
 
-    if status == "Task_Completed"
-      puts ("Status: " + status + "Task: " + task)
-      # todo Implement
-    end
-    if status == "Task_Recieved"
-      # todo Implement
+        # feed_report = FeedReport.new(ActiveSupport::JSON.decode(message))
+
+        # feed_report = FeedReport.new(JSON.parse(message))
+        # feed_report = feed_report.unmarshal_json(message)
+        # puts feed_report.id
+      end
     end
   end
 end
