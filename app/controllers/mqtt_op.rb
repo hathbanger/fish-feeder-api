@@ -4,11 +4,15 @@ require 'json'
 class MqttOp
   def initialize
     puts "NEW MQTT CLIENT!"
-    @client = MQTT::Client.connect(
-        :host => 'test.mosquitto.org',
-        :port => 1883
-    )
-    Thread.new{ self.mqtt_listen }
+    begin
+      @client = MQTT::Client.connect(
+          :host => 'test.mosquitto.org',
+          :port => 1883
+      )
+      Thread.new{ self.mqtt_listen }
+    rescue
+      puts "failed!"
+    end
   end
 
   def mqtt_listen
