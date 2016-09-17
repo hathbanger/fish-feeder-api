@@ -19,8 +19,8 @@ class MqttOp
     end
   end
 
-  def feed_fish
-    @client.publish('to_device', 'feed_fish')
+  def feed_fish(tank_id)
+    @client.publish('to_device', 'feed_fish', tank_id)
   end
 
   def handle_message(message)
@@ -51,9 +51,9 @@ class MqttOp
 
         # feed_report = FeedReport.new(ActiveSupport::JSON.decode(message))
 
-        # feed_report = FeedReport.new(JSON.parse(message))
-        # feed_report = feed_report.unmarshal_json(message)
-        # puts feed_report.id
+        feed_report = FeedReport.new(message)
+        puts feed_report._id
+        feed_report.save
       end
     end
   end

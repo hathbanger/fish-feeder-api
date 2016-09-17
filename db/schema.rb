@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160908170558) do
+ActiveRecord::Schema.define(version: 20160916225045) do
+
+  create_table "feed_reports", force: :cascade do |t|
+    t.string   "_id"
+    t.string   "device_id"
+    t.string   "timestamp"
+    t.boolean  "success"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "fish", force: :cascade do |t|
     t.string   "name"
