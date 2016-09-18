@@ -23,8 +23,8 @@ class MqttOp
     end
   end
 
-  def feed_fish(tank_id)
-    @client.publish('to_device', 'feed_fish', tank_id)
+  def feed_fish
+    @client.publish('to_device', 'feed_fish')
   end
 
   def handle_message(message)
