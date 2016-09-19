@@ -13,13 +13,16 @@ class FishController < ApplicationController
   end
 
   def feed_fish
-    @fish = Fish.find(params[:fish_id])
-    @fish.add_food
-    # @fish.save
-    if @fish.save
-      # sleep 5
-      render :status => "200", json: @fish
-    end  
+    $mqtt.feed_fish
+    render :status => "200", json: @fish
+
+    # todo IMPLEMENT // Respond to Browser when Feed Report has been returned
+
+    # @fish = Fish.find(params[:fish_id])
+    # @fish.add_food
+    # if @fish.save
+    #   render :status => "200", json: @fish
+    # end
   end
 
   # GET /fish/new
