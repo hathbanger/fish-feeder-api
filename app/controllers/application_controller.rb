@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   after_action :set_cors
 
   # Needs to be instantiated to a super class somewhere so multiple other controllers can use the same client
-  $mqtt = MqttOp.new
   
   def set_cors
     headers['Access-Control-Allow-Origin'] = '*'
