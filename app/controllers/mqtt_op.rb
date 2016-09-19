@@ -5,8 +5,10 @@ class MqttOp
   def initialize
     puts "NEW MQTT CLIENT!"
     @client = MQTT::Client.connect(
-        :host => 'test.mosquitto.org',
-        :port => 1883
+        :host => '138.68.47.232',
+        :port => 8883,
+        :username => "mosquitto",
+        :password => "amh05055"
     )
     Thread.new{ self.mqtt_listen }
   end
@@ -43,8 +45,8 @@ class MqttOp
         # haash = JSON.parse(message)
         # puts haash
         # feed_report = FeedReport.new
-        #
-        # feed_report.id = haash["id".to_sym]
+
+        # feed_report.id = haash["id"]
         # feed_report.deviceIdId = haash["device_id"]
         # feed_report.timestamp = haash["timestamp"]
         # feed_report.success = haash["success"]
