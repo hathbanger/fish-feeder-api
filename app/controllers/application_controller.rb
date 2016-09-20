@@ -1,13 +1,17 @@
 require 'mqtt_op'
 
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
   after_action :set_cors
+  # Prevent CSRF attacks by raising an exception.
+  # For APIs, you may want to use :null_session instead.
+  protect_from_forgery with: :null_session
+  
   attr_reader :current_user
+
 
   def set_cors
     headers['Access-Control-Allow-Origin'] = '*'
-    headers['Access-Control-Request-Method'] = 'http://localhost:8080'
+    headers['Access-Control-Request-Method'] = '*'
   end
   
   # Needs to be instantiated to a super class somewhere so multiple other controllers can use the same client

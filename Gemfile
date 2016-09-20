@@ -15,6 +15,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 gem 'jwt'
+gem 'rack-cors', :require => 'rack/cors'
 
 group :development, :test do
  
