@@ -11,7 +11,7 @@ class FeedReport < ApplicationRecord
   end
 
   def print()
-    puts(self)
+    puts self
   end
 
   # def unmarshal_json(json)
@@ -32,14 +32,14 @@ class FeedReport < ApplicationRecord
     # todo IMPLEMENT // find the report to the data base with id
   end
 
-  def as_json(options={})
-    {
-        :id => id,
-        :device_id => deviceId,
-        :timestamp => timestamp,
-        :success => success
-    }
-  end
+  # def as_json(options={})
+  #   {
+  #       :id => id,
+  #       :device_id => deviceId,
+  #       :timestamp => timestamp,
+  #       :success => success
+  #   }
+  # end
 end
 
 
