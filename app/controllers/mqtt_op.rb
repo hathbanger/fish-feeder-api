@@ -4,13 +4,17 @@ require 'json'
 class MqttOp
   def initialize
     puts "NEW MQTT CLIENT!"
-    @client = MQTT::Client.connect(
-        :host => '138.68.47.232',
-        :port => 8883,
-        :username => "mosquitto",
-        :password => "amh05055"
-    )
-    Thread.new{ self.mqtt_listen }
+    begin
+      @client = MQTT::Client.connect(
+          :host => '138.68.47.232',
+          :port => 8883,
+          :username => "mosquitto",
+          :password => "amh05055"
+      )
+      Thread.new{ self.mqtt_listen }
+    rescue
+      puts "broke! "
+    end
   end
 
   def mqtt_listen
@@ -22,6 +26,7 @@ class MqttOp
   end
 
   def feed_fish
+    puts "feed fish fired!"
     @client.publish('to_device', 'feed_fish')
   end
 
