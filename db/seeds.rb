@@ -6,8 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# f = Fish.new(name: 'nemo')
-# f.save
+f = Fish.new(name: 'nemo')
+f.save
 
 u1 = User.create!(email: "hathbanger.ah@gmail.com", password: "amh05055", password_confirmation: "amh05055")
 u2 = User.create!(email: "matthewberryhill@gmail.com", password: "rpm80203", password_confirmation: "rpm80203")
+
+u1.fish << f
