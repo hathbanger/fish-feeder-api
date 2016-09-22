@@ -15,7 +15,7 @@ class AuthenticationController < ApplicationController
     {
       auth_token: JsonWebToken.encode({user_id: user.id}),
       user: {id: user.id, email: user.email},
-      all_fish: {fish: Fish.all}
+      all_fish: {fish: Fish.where(user_id: user.id)}
     }
   end
 end
