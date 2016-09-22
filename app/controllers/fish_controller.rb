@@ -1,10 +1,10 @@
 class FishController < ApplicationController
   before_action :set_fish, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_request!
   # GET /fish
   # GET /fish.json
   def index
-    @fish = Fish.all
+    @fish = Fish.where(user_id: @current_user)
   end
 
   # GET /fish/1

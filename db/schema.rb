@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160917192349) do
+ActiveRecord::Schema.define(version: 20160921012456) do
 
   create_table "feed_reports", force: :cascade do |t|
     t.string   "_id"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 20160917192349) do
     t.integer  "food"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_fish_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
