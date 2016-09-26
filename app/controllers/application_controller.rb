@@ -15,7 +15,6 @@ class ApplicationController < ActionController::Base
   end
   
   # Needs to be instantiated to a super class somewhere so multiple other controllers can use the same client
-  $mqtt = MqttOp.new
   
 
 
