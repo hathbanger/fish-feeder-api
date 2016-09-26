@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  _id: MyString
+  device_id: MyString
+  timestamp: MyString
+  success: false
+
+two:
+  _id: MyString
+  device_id: MyString
+  timestamp: MyString
+  success: false

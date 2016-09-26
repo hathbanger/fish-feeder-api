@@ -1,10 +1,10 @@
 class FishController < ApplicationController
   before_action :set_fish, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_request!
   # GET /fish
   # GET /fish.json
   def index
-    @fish = Fish.all
+    @fish = Fish.where(user_id: @current_user)
   end
 
   # GET /fish/1
@@ -14,12 +14,11 @@ class FishController < ApplicationController
 
   def feed_fish
     @fish = Fish.find(params[:fish_id])
-    @fish.add_food
-    # @fish.save
-    if @fish.save
-      # sleep 5
-      render :status => "200", json: @fish
-    end  
+    puts "feeding fish"
+    $mqtt.feed_fish
+    @fish.food += 1
+    @fish.save
+    render json: {"all_fish":{"fish": Fish.where(user_id: @current_user)}}
   end
 
   # GET /fish/new
