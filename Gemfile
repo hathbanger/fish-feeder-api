@@ -17,6 +17,8 @@ gem 'devise'
 gem 'jwt'
 gem 'rack-cors', :require => 'rack/cors'
 
+gem 'whenever', :require => false
+
 group :development, :test do
  
   gem 'byebug', platform: :mri
